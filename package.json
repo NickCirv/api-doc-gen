@@ -1,0 +1,44 @@
+{
+  "name": "api-doc-gen",
+  "version": "1.0.0",
+  "description": "Generate API documentation from JSDoc/TSDoc comments — no TypeScript compiler required",
+  "type": "module",
+  "bin": {
+    "api-doc-gen": "./index.js",
+    "adg": "./index.js"
+  },
+  "main": "./index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "index.js",
+    "LICENSE"
+  ],
+  "keywords": [
+    "developer-tools",
+    "cli",
+    "nodejs",
+    "zero-dependencies",
+    "jsdoc",
+    "documentation",
+    "api",
+    "codegen",
+    "tsdoc",
+    "markdown",
+    "html",
+    "json",
+    "jsdoc-parser",
+    "api-docs"
+  ],
+  "author": "NickCirv",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NickCirv/api-doc-gen.git"
+  },
+  "homepage": "https://github.com/NickCirv/api-doc-gen#readme",
+  "bugs": {
+    "url": "https://github.com/NickCirv/api-doc-gen/issues"
+  }
+}
