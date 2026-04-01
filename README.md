@@ -1,3 +1,5 @@
+![Banner](banner.svg)
+
 # api-doc-gen
 
 Generate API documentation from JSDoc/TSDoc comments in JS/TS files. No TypeScript compiler, no build step, zero external dependencies.
