@@ -1,127 +1,58 @@
-![Banner](banner.svg)
+<div align="center">
 
 # api-doc-gen
 
-Generate API documentation from JSDoc/TSDoc comments in JS/TS files. No TypeScript compiler, no build step, zero external dependencies.
+**Turn JSDoc/TSDoc comments into Markdown, HTML, or JSON docs — no compiler, no config, no dependencies**
 
-```
-adg ./src --format html --output docs/
-```
+[![License: MIT](https://img.shields.io/badge/License-MIT-0B0A09?style=flat-square&labelColor=0B0A09&color=6366f1)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D18-0B0A09?style=flat-square&labelColor=0B0A09&color=6366f1)](package.json)
+[![Zero dependencies](https://img.shields.io/badge/dependencies-0-0B0A09?style=flat-square&labelColor=0B0A09&color=6366f1)](package.json)
 
-## Features
-
-- Scans `.js`, `.ts`, `.mjs`, `.cjs`, `.tsx`, `.jsx` files recursively
-- Extracts `@param`, `@returns`, `@description`, `@example`, `@throws`, `@deprecated`, `@private`, `@since`, `@author`, `@version`
-- Outputs **Markdown**, **HTML** (dark-themed, standalone), or **JSON**
-- `--watch` mode with debounced regeneration
-- `--private` flag to include `@private` tagged entries
-- Output to stdout, file, or directory
-- No `node_modules`, no config files, no compiler
+</div>
 
 ## Install
 
 ```bash
-npm install -g api-doc-gen
+npx github:NickCirv/api-doc-gen ./src
 ```
 
-Or run without installing:
+Or install globally:
 
 ```bash
-npx api-doc-gen ./src
+npm install -g github:NickCirv/api-doc-gen
 ```
 
 ## Usage
 
-```
-adg [file|dir] [options]
-api-doc-gen [file|dir] [options]
-
-OPTIONS
-  --format, -f <format>   Output format: markdown (default), html, json
-  --output, -o <path>     Output file or directory. Default: stdout
-  --watch, -w             Watch for changes and regenerate
-  --private               Include @private tagged entries
-  --help, -h              Show this help message
-  --version, -v           Show version
-```
-
-## Examples
-
 ```bash
-# Markdown to stdout
+# Markdown to stdout (default)
 adg ./src
 
-# HTML docs to a directory
+# Standalone dark-themed HTML
 adg ./src --format html --output docs/
 
-# JSON to a specific file
+# JSON for CI pipelines or custom renderers
 adg index.js --format json --output api.json
 
-# Write Markdown, watch for changes
+# Watch mode — regenerates on save
 adg ./src --watch --output docs/api.md
-
-# Include private APIs
-adg ./src --private
-
-# Generate docs from this tool's own source
-adg index.js
 ```
 
-## Supported JSDoc Tags
+| Flag | Description |
+|------|-------------|
+| `--format, -f` | `markdown` (default), `html`, `json` |
+| `--output, -o` | Output file or directory (default: stdout) |
+| `--watch, -w` | Watch for changes and regenerate |
+| `--private` | Include `@private` tagged entries |
+| `--help, -h` | Show help |
+| `--version, -v` | Show version |
 
-| Tag | Description |
-|-----|-------------|
-| `@description` | Function/class description (also parsed from block preamble) |
-| `@param {type} name - desc` | Parameter with type and description |
-| `@returns {type} - desc` | Return value |
-| `@throws {ErrorType} - desc` | Thrown exceptions |
-| `@example` | Code example (rendered as fenced code block) |
-| `@deprecated` | Marks entry as deprecated |
-| `@private` | Hidden unless `--private` flag used |
-| `@since` | Version since available |
-| `@author` | Author attribution |
-| `@version` | Module/function version |
+## What it does
 
-## Output Formats
+Scans `.js`, `.ts`, `.mjs`, `.cjs`, `.tsx`, and `.jsx` files recursively and extracts JSDoc comment blocks — `@param`, `@returns`, `@example`, `@throws`, `@deprecated`, `@private`, `@since`, `@author`, `@version` — into structured documentation. No TypeScript compiler, no `node_modules`, no config file required.
 
-### Markdown (default)
+HTML output is a self-contained single-file page with a dark theme. JSON output is structured for downstream tooling or custom renderers.
 
-Clean GitHub-flavoured Markdown. Perfect for `README.md`, GitHub wiki, or any Markdown renderer.
+---
 
-### HTML
-
-Self-contained single-file HTML with a dark theme. No external assets or CDN dependencies. Open directly in a browser.
-
-### JSON
-
-Structured JSON output for downstream tooling, CI pipelines, or custom renderers.
-
-```json
-{
-  "generated": "2026-03-03T09:00:00.000Z",
-  "generator": "api-doc-gen v1.0.0",
-  "files": ["src/index.js"],
-  "entries": [
-    {
-      "name": "parseArgs",
-      "kind": "function",
-      "description": "...",
-      "params": [{ "name": "argv", "type": "string[]", "description": "..." }],
-      "returns": { "type": "object", "description": "..." },
-      "examples": [],
-      "throws": [],
-      "deprecated": null,
-      "private": false
-    }
-  ]
-}
-```
-
-## Requirements
-
-- Node.js 18+
-- Zero npm dependencies
-
-## License
-
-MIT
+<sub>Zero dependencies · Node ≥18 · MIT · by <a href="https://github.com/NickCirv">NickCirv</a></sub>
