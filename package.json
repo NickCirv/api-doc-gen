@@ -40,5 +40,8 @@
   "homepage": "https://github.com/NickCirv/api-doc-gen#readme",
   "bugs": {
     "url": "https://github.com/NickCirv/api-doc-gen/issues"
+  },
+  "scripts": {
+    "test": "node --test"
   }
 }
